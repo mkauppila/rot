@@ -4,15 +4,17 @@ char rot(char ch, int rot, int reverse) {
   if ('A' <= ch && ch <= 'Z') {
     const int base = (int)'A';
     const int alphaCount = ('Z' - 'A') + 1;
-    const int arot = reverse ? (alphaCount - rot) : rot;
+    const int shift = reverse ? (alphaCount - rot) : rot;
 
-    return (((ch - base) + arot) % alphaCount) + base;
+    return (((ch - base) + shift) % alphaCount) + base;
   } else {
     return ch;
   }
 }
 
-int main(int argc, char *argp[]) {
+int main(int argc, char *argv[]) {
+  // TODO handle command line args
+
   while (1) {
     char ch = fgetc(stdin);
     if (feof(stdin)) {
