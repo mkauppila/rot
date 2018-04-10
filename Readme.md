@@ -8,14 +8,15 @@ Only works for characters A-Z.
 
 ```bash
 Usage:
-rot [-cd] < STDIN > STDOUT
+rot [-c | -d] [-r number] < STDIN > STDOUT
 ```
-- `-c` option ciphers the input
-- `-d` option deciphers the input
+- `-c` - ciphers the input
+- `-d` - deciphers the input
+- `-n number` - how many characters to shift
 
 ## Testing
 
-Compile tests with `make test` and run `./test`. If all goes well, it'll say "Tests OK!". If not it'll greet you with assertion failures.
+Compile tests with `make test` and run `./test`. If all goes well, it'll say "Tests OK!". If not, it'll greet you with assertion failures.
 
 ## License
 

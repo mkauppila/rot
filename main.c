@@ -18,7 +18,7 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
 
   if (argc == 2 && strncmp("--usage", argv[1], 7) == 0) {
     fprintf(stdout, "Usage:\n");
-    fprintf(stdout, "rot [-c | -d] [-r number] < STDIN > STDOUT\n");
+    fprintf(stdout, "rot [-c | -d] [-n number] < STDIN > STDOUT\n");
     args.errored = 1;
     return args;
   }
