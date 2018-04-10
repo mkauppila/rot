@@ -20,6 +20,7 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
     fprintf(stdout, "Usage:\n");
     fprintf(stdout, "rot [-c | -d] [-r number] < STDIN > STDOUT\n");
     args.errored = 1;
+    return args;
   }
 
   if (argc >= 2 && strncmp("-c", argv[1], 2) == 0) {
@@ -31,6 +32,7 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
   else {
     fprintf(stdout, "Requires -c(ipher) or -d(echipher).\n");
     args.errored = 1;
+    return args;
   }
 
   if (argc >= 3 && strncmp("-n", argv[2], 2) == 0) {
@@ -40,11 +42,13 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
     } else {
       fprintf(stdout, "Option -n requires an integer for defining the rotation count.\n");
       args.errored = 1;
+      return args;
     }
   }
   else {
     fprintf(stdout, "Invalid parameter: %s\n", argv[2]);
     args.errored = 1;
+    return args;
   }
 
   return args;
