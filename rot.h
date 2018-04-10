@@ -7,7 +7,7 @@ typedef enum {
 } mode_t;
 
 /**
- * ch: character for rotation
+ * ch: character for rotaton
  * rot: how much to rotate
  * mode: CIPHER or DECIPHER
  */
