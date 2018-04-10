@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     if (feof(stdin)) {
       break;
     }
-    fputc(rot(ch, 1, 1), stdout);
+    fputc(rot(ch, 1, CIPHER), stdout);
   }
 
   return 0;
