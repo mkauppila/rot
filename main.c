@@ -2,24 +2,30 @@
 #include <string.h>
 #include "rot.h"
 
+/*
+  # Bugs
+    - negative number of rotations
+  # refactor
+    - rot function
+*/
 
 typedef struct {
   mode_t mode;
   int rotations;
-  int errored; // failed to parse cmd args
+  int parsingFailed;
 } arguments_t;
 
 arguments_t parseCmdArgs(int argc, char *argv[]) {
   arguments_t args = {
     .mode = CIPHER,
     .rotations = 1,
-    .errored = 0,
+    .parsingFailed = 0,
   };
 
   if (argc == 2 && strncmp("--usage", argv[1], 7) == 0) {
     fprintf(stdout, "Usage:\n");
     fprintf(stdout, "rot [-c | -d] [-n number] < STDIN > STDOUT\n");
-    args.errored = 1;
+    args.parsingFailed = 1;
     return args;
   }
 
@@ -31,7 +37,7 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
   }
   else {
     fprintf(stdout, "Requires -c(ipher) or -d(echipher).\n");
-    args.errored = 1;
+    args.parsingFailed = 1;
     return args;
   }
 
@@ -41,13 +47,13 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
       printf("%d\n", args.rotations);
     } else {
       fprintf(stdout, "Option -n requires an integer for defining the rotation count.\n");
-      args.errored = 1;
+      args.parsingFailed = 1;
       return args;
     }
   }
   else {
     fprintf(stdout, "Invalid parameter: %s\n", argv[2]);
-    args.errored = 1;
+    args.parsingFailed = 1;
     return args;
   }
 
@@ -56,7 +62,7 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
 
 int main(int argc, char *argv[]) {
   arguments_t args = parseCmdArgs(argc, argv);
-  if (args.errored) {
+  if (args.parsingFailed) {
     return 1;
   }
 
