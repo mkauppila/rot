@@ -2,13 +2,6 @@
 #include <string.h>
 #include "rot.h"
 
-/*
-  # Bugs
-    - negative number of rotations
-  # refactor
-    - rot function
-*/
-
 typedef struct {
   mode_t mode;
   int rotations;

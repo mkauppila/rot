@@ -1,8 +1,8 @@
 # ROT Cipher
 
 A ROT cipher (and decipher) in C. Reads input from STDIN and writes to STDOUT.
+It (de)ciphers characters from space (0x20) to ~ (0x7E).
 
-Only works for characters A-Z.
 
 ## Usage
 
@@ -20,4 +20,4 @@ Compile tests with `make test` and run `./test`. If all goes well, it'll say "Te
 
 ## License
 
-Licensed under MIT 2018 Markus Kauppila <markus.kauppila@gmail.com>
+See the LICENSE file for license rights and limitations (MIT).
