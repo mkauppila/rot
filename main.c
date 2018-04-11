@@ -29,7 +29,7 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
     args.mode = DECIPHER;
   }
   else {
-    fprintf(stdout, "Requires -c(ipher) or -d(echipher).\n");
+    fprintf(stderr, "Requires -c(ipher) or -d(echipher).\n");
     args.parsingFailed = 1;
     return args;
   }
@@ -38,18 +38,18 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
     if (argc >= 4) {
       sscanf(argv[3], "%d", &args.rotations);
       if (args.rotations < 1) {
-        fprintf(stdout, "n needs to be >= 1\n");
+        fprintf(stderr, "n needs to be >= 1\n");
         args.parsingFailed = 1;
         return args;
       }
     } else {
-      fprintf(stdout, "Option -n requires an integer for defining the rotation count.\n");
+      fprintf(stderr, "Option -n requires an integer for defining the rotation count.\n");
       args.parsingFailed = 1;
       return args;
     }
   }
   else {
-    fprintf(stdout, "Invalid parameter: %s\n", argv[2]);
+    fprintf(stderr, "Invalid parameter: %s\n", argv[2]);
     args.parsingFailed = 1;
     return args;
   }
