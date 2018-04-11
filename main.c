@@ -44,7 +44,11 @@ arguments_t parseCmdArgs(int argc, char *argv[]) {
   if (argc >= 3 && strncmp("-n", argv[2], 2) == 0) {
     if (argc >= 4) {
       sscanf(argv[3], "%d", &args.rotations);
-      printf("%d\n", args.rotations);
+      if (args.rotations < 1) {
+        fprintf(stdout, "n needs to be >= 1\n");
+        args.parsingFailed = 1;
+        return args;
+      }
     } else {
       fprintf(stdout, "Option -n requires an integer for defining the rotation count.\n");
       args.parsingFailed = 1;
